@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import Home from "./components/Home"
 import EventGallery from "./components/EventGallery"
 import { Portfolio } from "./components/Portfolio"
@@ -10,23 +10,59 @@ import {About as MobileAboutPage} from "../src/pages/About"
 import Contact from "./components/Contact"
 import {Contact as MobileContactPage} from "../src/pages/Contact"
 import { useIsMobile } from "./hooks/useIsMobile"
+import { AnimatePresence, motion } from "framer-motion"
 
 
 function App() {
     const isMobile = useIsMobile();
+    const location = useLocation();
     return (
         <div className="bg-black min-h-screen text-white">
             <Navigation/>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/gallery/:eventType" element={<EventGallery />} />
-                <Route path="/portfolio" element={<Portfolio/>}/>
-                <Route path="/portfolio-m"element={<MobilePortfolioPage/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/about-mobile" element={<MobileAboutPage/>}/>
-                <Route path="/contact" element={<Contact/>}/>
-                <Route path="/contact-mobile" element={<MobileContactPage/>}/>
+            <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<motion.div initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
+><Home /></motion.div>} />
+                <Route path="/gallery/:eventType" element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+><EventGallery /></motion.div>} />
+                <Route path="/portfolio" element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+><Portfolio/></motion.div>}/>
+                <Route path="/portfolio-m"element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+><MobilePortfolioPage/></motion.div>}/>
+                <Route path="/about" element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+ ><About/></motion.div>}/>
+                <Route path="/about-mobile" element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+><MobileAboutPage/></motion.div>}/>
+                <Route path="/contact" element={<motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+><Contact/></motion.div>}/>
+                <Route path="/contact-mobile" element={<motion.div initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.25 }}
+ ><MobileContactPage/></motion.div>}/>
             </Routes>
+               </AnimatePresence>
             {isMobile ? null : <Footer/>}
             
         </div>
