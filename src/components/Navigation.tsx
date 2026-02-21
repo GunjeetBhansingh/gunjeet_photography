@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Home, Grid, User, Mail } from 'lucide-react'
 import { logo_name } from '../constants/variables'
+import { useIsMobile } from '../hooks/useIsMobile'
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
     const [scrolled, setScrolled] = useState(false)
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,14 +25,73 @@ const Navigation = () => {
     }
 
     return (
-        <>
-            <nav
-                className={`fixed top-0 left-0 w-full z-100 transition-all duration-normal ${scrolled
+        (isMobile) ? (
+
+                 <nav className="block md:hidden fixed bottom-0 left-0 w-full z-200 bg-black/40 backdrop-blur-lg text-white pb-safe">
+                <ul className="flex justify-around items-center h-16 m-0 p-0 list-none">
+                    <li>
+                        <Link
+                            to="/"
+                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 backdrop-blur-lg items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
+                            // onClick={(e) => {
+                            //     e.preventDefault()
+                            //     scrollToSection('home')
+                            // }}
+                        >
+                            <Home size={20} className="mb-1" />
+                            {/* <span className="text-[10px] uppercase tracking-wider">Home</span> */}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/portfolio-m"
+                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
+                            // onClick={(e) => {
+                            //     e.preventDefault()
+                            //     scrollToSection('portfolio-m')
+                            // }}
+                        >
+                            <Grid size={20} className="mb-1" />
+                            {/* <span className="text-[10px] uppercase tracking-wider">Work</span> */}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/about-mobile"
+                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
+                            // onClick={(e) => {
+                            //     e.preventDefault()
+                            //     scrollToSection('about-mobile')
+                            // }}
+                        >
+                            <User size={20} className="mb-1" />
+                            {/* <span className="text-[10px] uppercase tracking-wider">About</span> */}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/contact-mobile"
+                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 backdrop-blur-lg items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
+                            // onClick={(e) => {
+                            //     e.preventDefault()
+                            //     scrollToSection('contact-mobile')
+                            // }}
+                        >
+                            <Mail size={20} className="mb-1" />
+                            {/* <span className="text-[10px] uppercase tracking-wider">Contact</span> */}
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        ):(
+
+                 <nav
+                className={`hidden md:block fixed top-0 left-0 w-full z-100 transition-all duration-normal ${scrolled
                     ? 'py-4 bg-black/95 shadow-medium'
                     : 'py-8 bg-black/80 backdrop-blur-md'
                     }`}
             >
-                <div className="container max-w-[1400px] mx-auto px-8">
+                <div className="container max-w-350 mx-auto px-8">
                     <div className="flex justify-between items-center">
                         <a
                             href="#home"
@@ -60,64 +122,8 @@ const Navigation = () => {
                     </div>
                 </div>
             </nav>
-
-            <nav className="md:hidden fixed bottom-0 left-0 w-full z-200 bg-black/40 backdrop-blur-lg text-white pb-safe">
-                <ul className="flex justify-around items-center h-16 m-0 p-0 list-none">
-                    <li>
-                        <a
-                            href="#home"
-                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 backdrop-blur-lg items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('home')
-                            }}
-                        >
-                            <Home size={20} className="mb-1" />
-                            {/* <span className="text-[10px] uppercase tracking-wider">Home</span> */}
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#portfolio"
-                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('portfolio')
-                            }}
-                        >
-                            <Grid size={20} className="mb-1" />
-                            {/* <span className="text-[10px] uppercase tracking-wider">Work</span> */}
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('about')
-                            }}
-                        >
-                            <User size={20} className="mb-1" />
-                            {/* <span className="text-[10px] uppercase tracking-wider">About</span> */}
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#contact"
-                            className="flex flex-col bg-black/35 rounded-full h-12 w-12 backdrop-blur-lg items-center justify-center p-2 text-muted-gray hover:text-white transition-colors"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('contact')
-                            }}
-                        >
-                            <Mail size={20} className="mb-1" />
-                            {/* <span className="text-[10px] uppercase tracking-wider">Contact</span> */}
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </>
+        )
+       
     )
 }
 

@@ -33,7 +33,7 @@ const portfolioItems: PortfolioItem[] = [
     },
 ]
 
-const Portfolio = () => {
+export const Portfolio = () => {
     const portfolioRef = useRef<HTMLDivElement>(null)
     const navigate = useNavigate()
 
@@ -63,7 +63,7 @@ const Portfolio = () => {
 
     return (
         <section id="portfolio" className="py-20 md:pt-5 relative">
-            <div className="container max-w-[1400px] mx-auto px-8">
+            <div className="container max-w-350 mx-auto px-8">
                 <div className="text-center mb-12 md:mb-24 opacity-55 translate-y-8 animate-fade-in-up">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 text-white">Event Photography</h2>
                     <p className="text-base block md:hidden md:text-lg text-white">
@@ -100,4 +100,4 @@ const Portfolio = () => {
     )
 }
 
-export default Portfolio
+

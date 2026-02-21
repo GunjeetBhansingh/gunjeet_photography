@@ -29,10 +29,10 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen pt-[100px] md:mt-[10px] flex items-center justify-center relative overflow-hidden bg-black"
+            className="min-h-screen pt-25 md:mt-2.5 flex items-center justify-center relative overflow-hidden bg-black"
             ref={heroRef}
         >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center max-w-[1400px] mx-auto px-8">
+            <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-16 md:gap-24 items-center max-w-350 mx-auto px-8">
                 <div className="opacity-55 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                     <h1 className="text-5xl text-white md:text-7xl lg:text-8xl font-light mb-4 leading-[1.1]">
                         Capturing
@@ -44,7 +44,7 @@ const Hero = () => {
                     <p className="text-xl md:text-2xl text-white font-light mb-8 font-body">
                         Visual Storyteller & Fine Art Photographer
                     </p>
-                    <p className="text-base md:text-lg text-white leading-relaxed max-w-[500px]">
+                    <p className="text-base md:text-lg text-white leading-relaxed max-w-125">
                         Exploring the interplay of light and shadow, creating cinematic narratives
                         through the lens. Every frame tells a story of mystery, emotion, and artistry.
                     </p>
