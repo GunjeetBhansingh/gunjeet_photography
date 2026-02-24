@@ -58,12 +58,6 @@ const Contact = () => {
                         <a
                             href={instagram_id}
                             id='instagram'
-                            onClick={
-                                (e) => {
-                                    e.preventDefault()
-                                    document.getElementById('instagram')?.scrollIntoView({ behavior: 'smooth' })
-                                }
-                            }
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block col-span-full md:mt-8 px-10 py-4 bg-transparent text-white border border-white font-body text-sm font-normal tracking-widest uppercase cursor-pointer relative overflow-hidden transition-all duration-normal hover:text-black before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-white before:transition-all before:duration-normal before:z-[-1] hover:before:left-0"
