@@ -26,11 +26,18 @@ const About = () => {
   return (
     <section id="about" className="md:pt-20 relative" ref={aboutRef}>
       <div
-        className="absolute inset-0
-            bg-[radial-gradient(circle_at_top_left,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.9)_30%,rgba(0,0,0,0.9)_45%,rgba(0,0,0,0.9)_65%,rgba(0,0,0,0)_75%)]"
-      ></div>
-      <div className="container opcaity-90 hidden md:block max-w-350 mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+         className="absolute inset-0 z-0
+         bg-[radial-gradient(circle_at_top_left,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.9)_30%,rgba(0,0,0,0.9)_45%,rgba(0,0,0,0.9)_65%,rgba(0,0,0,0)_75%)]"
+       ></div>
+       <div className="relative z-10 container hidden md:block max-w-350 mx-auto px-8">
+        {/* <div className="text-center mb-4 md:mb-24">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-8 text-white">About</h2>
+                    <p className="text-base md:text-lg text-white">
+                        The artist behind the lens
+                    </p>
+                </div> */}
+        
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
           <div className="max-w-150">
             <h2 className="text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-8 text-white">
               About
@@ -38,7 +45,7 @@ const About = () => {
             <h3 className="text-2xl text-white md:text-3xl lg:text-4xl mb-4">
               Crafting Stories Through Shadow & Light
             </h3>
-            <p className="text-base md:text-lg text-slate-50 font-light leading-relaxed mb-4">
+            <p className="text-base md:text-lg text-slate-400 font-light leading-relaxed mb-4">
               With over a decade of experience in fine art photography, I
               specialize in creating cinematic imagery that explores the
               delicate balance between darkness and illumination. My work is
