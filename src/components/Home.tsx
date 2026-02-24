@@ -1,4 +1,4 @@
-import { About } from "../pages/About";
+import About  from "./About";
 import Contact from "./Contact";
 import Hero from "./Hero";
 import { Portfolio } from "./Portfolio";
